@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 function Main() {
     const [data, setData] = useState([])
     const [count, setCount] = useState(12)
+    const [randomIndex, setrandomIndex] = useState(0)
     const [text, setText] = useState('')
     const [gizlet, setGizlet] = useState(false)
     const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -14,12 +15,15 @@ function Main() {
     useEffect(() => {
         fetch('https://restcountries.com/v3.1/all?fields=name,capital,flags,region,cca3')
             .then(resp => resp.json())
-            .then(info => setData(info))
+            .then(info => {
+                setData(info)
+                setrandomIndex(rand(0, info.length))
+            })
     }, [])
 
     if (data.length == 0) return <div className="w-16 m-auto h-16 border-4 border-dashed rounded-full animate-spin border-violet-400 dark:border-violet-600"></div>
 
-    const randomIndex = rand(0, data.length) //render olandada deyisir
+    // const randomIndex = rand(0, data.length) //render olandada deyisir
 
     function axtar(){
         return data.filter(item=>item.name.official.toLowerCase().includes(text))
