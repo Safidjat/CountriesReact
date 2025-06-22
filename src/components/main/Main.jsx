@@ -18,8 +18,10 @@ function Main() {
             .then(info => {
                 setData(info)
                 setrandomIndex(rand(0, info.length))
+                console.log( Array.from(new Set(info.map(item=>item.region))));
             })
     }, [])
+console.log(data);
 
     if (data.length == 0) return <div className="w-16 m-auto h-16 border-4 border-dashed rounded-full animate-spin border-violet-400 dark:border-violet-600"></div>
 
@@ -36,7 +38,7 @@ function Main() {
                 <div className={`${!gizlet ? 'h-0': 'h-[108px]'} transition-all duration-200 ease-in-out overflow-hidden`}>
                     <div className="relative pt-[50px] m-auto max-w-[394px]  flex  gap-2 p-4">
                         <input onChange={(e)=>setText(e.target.value.trim().toLowerCase())} className="bg-white w-full py-[10px] pr-[10px] pl-[40px] rounded-lg text-sm dark:text-gray-900 text-[#9ca3af] placeholder:text-[#9ca3af] border outline-none dark:focus:border-blue-500 border-[#e5e7eb]" placeholder="Search branch name..." type="text" />
-                        <svg class="absolute left-[25px] bottom-[29px]  w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20"><path stroke="currentColor" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"></path></svg>
+                        <svg className="absolute left-[25px] bottom-[29px]  w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20"><path stroke="currentColor" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"></path></svg>
                         <button onClick={axtar} className='cursor-pointer hover:bg-[#ccc] p-[10px] dark:bg-[#6366f1] text-[#1e2939] rounded-lg dark:hover:bg-[#4345a4] bg-white dark:text-white'><FaSearch /></button>
                     </div>
                 </div>

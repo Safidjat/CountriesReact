@@ -7,7 +7,7 @@ function Card({flags,name,capital,region}) {
          />
         <div className="p-6 space-y-2">
             <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{name.official}</h3>
-            <span className="text-xs text-gray-400 dark:text-gray-600">{capital[0]}</span>
+            <span className="text-xs text-gray-400 dark:text-gray-600">{ capital}</span>
             <p>{region}</p>
         </div>
     </a>
