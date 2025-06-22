@@ -3,6 +3,8 @@ import Card from "./Card"
 import RandomCard from "./RandomCard"
 import { FaSearch } from "react-icons/fa";
 import { Pagination } from 'antd';
+import {scrollToId} from '/src/utilities/scroll.js'
+
 
 function Main() {
     const [data, setData] = useState([])
@@ -22,7 +24,7 @@ function Main() {
                 console.log( Array.from(new Set(info.map(item=>item.region))));
             })
     }, [])
-console.log(data);
+
 
     if (data.length == 0) return <div className="w-16 m-auto h-16 border-4 border-dashed rounded-full animate-spin border-violet-400 dark:border-violet-600"></div>
 
@@ -31,7 +33,6 @@ console.log(data);
     function axtar(){
         return data.filter(item=>item.name.official.toLowerCase().includes(text))
     }
-
 
     return (
         <>
@@ -50,7 +51,7 @@ console.log(data);
                     <p className="px-8 mt-8 mb-12 text-lg">Aşağıdan bütün ölkələri axtara və onlar haqqında ətraflı məlumat tapa bilərsiniz!</p>
                     <div className="flex flex-wrap justify-center">
                         <button onClick={()=>setGizlet(!gizlet)} className="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50 cursor-pointer" fdprocessedid="4xrh9k">Axtarmağa başla</button>
-                        <button className="px-8 py-3 m-2 text-lg border rounded text-gray-50 dark:text-gray-900 border-gray-700 dark:border-gray-300 cursor-pointer" fdprocessedid="gothoo">Ölkələrə keçid et</button>
+                        <button onClick={()=>{scrollToId(document.getElementById('content'))}} className="px-8 py-3 m-2 text-lg border rounded text-gray-50 dark:text-gray-900 border-gray-700 dark:border-gray-300 cursor-pointer" fdprocessedid="gothoo">Ölkələrə keçid et</button>
                     </div>
                 </div>
             </section>
@@ -58,14 +59,18 @@ console.log(data);
             <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                     {data.length > 0 && <RandomCard {...data[randomIndex]} />}
-                    <div id="cont" className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div id="content" className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {data.slice(count - 12, count).map(item => <Card key={item.cca3} {...item} />)}
                     </div>
                     <div className="flex justify-center">
 
                         {
-                            <Pagination onChange={(pageNum,pageSize)=>{setCount(pageNum*pageSize);console.log(count);
-                            }} defaultCurrent={1} defaultPageSize={12} total={data.length} />
+                            <Pagination 
+                                onChange={(pageNum,pageSize)=>{
+                                    setCount(pageNum*pageSize);
+                                    scrollToId(document.getElementById('content'));
+                                }} 
+                                defaultCurrent={1} pageSize={12} total={data.length} />
                         }
 
                         {/* <button onClick={() => {
