@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Card from "./Card"
 import RandomCard from "./RandomCard"
 import { FaSearch } from "react-icons/fa";
+import { Pagination } from 'antd';
 
 function Main() {
     const [data, setData] = useState([])
@@ -61,9 +62,15 @@ console.log(data);
                         {data.slice(count - 12, count).map(item => <Card key={item.cca3} {...item} />)}
                     </div>
                     <div className="flex justify-center">
-                        <button onClick={() => {
+
+                        {
+                            <Pagination onChange={(pageNum,pageSize)=>{setCount(pageNum*pageSize);console.log(count);
+                            }} defaultCurrent={1} defaultPageSize={12} total={data.length} />
+                        }
+
+                        {/* <button onClick={() => {
                             setCount(data.length - count >= 12 ? count + 12 : count + (data.length - count)); console.log(count);
-                        }} type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-gray-900 dark:bg-gray-50 text-gray-400 dark:text-gray-600 cursor-pointer" fdprocessedid="tze6a">Artır</button>
+                        }} type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-gray-900 dark:bg-gray-50 text-gray-400 dark:text-gray-600 cursor-pointer" fdprocessedid="tze6a">Artır</button> */}
                     </div>
                 </div>
             </section>
