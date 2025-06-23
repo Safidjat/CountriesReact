@@ -10,6 +10,7 @@ function Country() {
         .then(resp=>resp.json())
         .then(data=>setElem(data[0]))
     },[cca3])
+    
 console.log(elem);
 
     if (Object.keys(elem).length==0) return <div className="w-16 m-auto h-16 border-4 border-dashed rounded-full animate-spin  border-violet-400 dark:border-violet-600"></div>
