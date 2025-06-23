@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Card from './Card';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {scrollTo} from '/src/utilities/scroll.js'
 import { Pagination } from 'antd';
 
@@ -31,7 +31,7 @@ function Region() {
                 </div>
                 <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
                     {
-                        data?.slice(count-12,count).map(item=><Card key={item.cca3} {...item}/>)
+                        data?.slice(count-12,count).map(item=><Link key={item.cca3} to={`/alpha/${item.cca3}`}><Card {...item}/></Link>)
                     }
                 </div>
                 <div className="flex justify-center">

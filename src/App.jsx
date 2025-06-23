@@ -4,6 +4,7 @@ import Header from "./components/header/Header"
 import Main from "./components/main/Main"
 import { Route, Routes } from "react-router-dom";
 import Region from "./components/main/Region";
+import Country from "./components/main/Country";
 
 function App() {
   const [mode, setMode] = useState(() => {
@@ -23,6 +24,7 @@ function App() {
         <Routes> 
           <Route path='/' element={<Main />} />
           <Route path='/region/:reg' element={<Region />} />
+          <Route path="/alpha/:cca3" element={<Country />}/>
         </Routes>
 
         <Footer />

@@ -4,6 +4,7 @@ import RandomCard from "./RandomCard"
 import { FaSearch } from "react-icons/fa";
 import { Pagination } from 'antd';
 import {scrollToId} from '/src/utilities/scroll.js'
+import { Link } from "react-router-dom";
 
 
 function Main() {
@@ -33,6 +34,7 @@ function Main() {
     function axtar(){
         return data.filter(item=>item.name.official.toLowerCase().includes(text))
     }
+console.log(data);
 
     return (
         <>
@@ -60,7 +62,7 @@ function Main() {
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                     {data.length > 0 && <RandomCard {...data[randomIndex]} />}
                     <div id="content" className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {data.slice(count - 12, count).map(item => <Card key={item.cca3} {...item} />)}
+                        {data.slice(count - 12, count).map(item => <Link key={item.cca3} to={`/alpha/${item.cca3}`}><Card {...item} /></Link>)}
                     </div>
                     <div className="flex justify-center">
 

@@ -16,8 +16,8 @@ function Header({changeMode,mode}) {
         const active=regionlar.findIndex(item=>item.toLowerCase()==reg)
         if(active!=-1){
             clicked(active)
-        }
-    },[])
+        }else setsecilmisReg(Array(regionlar.length).fill(false))
+    },[location])
 
     function clicked(i){
         const newAr=Array(regionlar.length).fill(false)
