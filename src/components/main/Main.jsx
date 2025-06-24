@@ -3,7 +3,7 @@ import Card from "./Card"
 import RandomCard from "./RandomCard"
 import { FaSearch } from "react-icons/fa";
 import { Pagination } from 'antd';
-import {scrollToId} from '/src/utilities/scroll.js'
+import {scrollToId,scrollTo} from '/src/utilities/scroll.js'
 import { Link } from "react-router-dom";
 
 
@@ -57,8 +57,9 @@ console.log(data);
                     <div className="flex flex-wrap justify-center">
                         <button 
                             onClick={()=>{
-                                if(gizlet) {setText('');setData(zapaz)};
-                                setGizlet(!gizlet)
+                                if(gizlet) {setText('');setData(zapaz)}
+                                else scrollTo();
+                                setGizlet(!gizlet);
                             }} 
                             className="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50 cursor-pointer" fdprocessedid="4xrh9k">{!gizlet?'Axtarmağa başla':'Axtarışı söndür'}</button>
                         <button onClick={()=>{scrollToId(document.getElementById('content'))}} className="px-8 py-3 m-2 text-lg border rounded text-gray-50 dark:text-gray-900 border-gray-700 dark:border-gray-300 cursor-pointer" fdprocessedid="gothoo">Ölkələrə keçid et</button>
