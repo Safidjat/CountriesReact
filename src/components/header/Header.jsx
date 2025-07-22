@@ -11,6 +11,9 @@ function Header({changeMode,mode}) {
     // useLocation: Возвращает объект location, который содержит информацию о текущем URL. Нас интересует его свойство pathname. Например, для https://сайт.com/region/europe, location.pathname будет равен "/region/europe".
     // Этот хук, в отличие от useParams, работает в любом компоненте, который находится внутри <BrowserRouter>.
 
+    // useParams — достает динамические параметры из URL. Это как спросить: "Какой ID пользователя указан в адресе /users/123?". Ответ: 123.
+    // useLocation — дает информацию обо всем текущем URL. Это как спросить: "Какой сейчас полный адрес?". Ответ: объект с путем /users/123, query-параметрами ?sort=asc и т.д.
+    
     useEffect(()=>{
         const reg=location.pathname.split('/').pop()
         const active=regionlar.findIndex(item=>item.toLowerCase()==reg)
@@ -24,6 +27,15 @@ function Header({changeMode,mode}) {
         newAr[i]=true;
         setsecilmisReg(newAr)
     }
+    // <NavLink
+    //     to={`region/${item.toLowerCase()}`}
+    //     // NavLink передает в функцию isActive: true, если путь совпадает
+    //     className={({ isActive }) => 
+    //         `flex items-center px-4 -mb-1 border-b-2 dark:border- ${isActive ? 'text-violet-600 border-violet-600' : ''}`
+    //     }
+    // >
+    //     {item}
+    // </NavLink>
 
     return (
         <header className="sticky top-0 p-4 bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
@@ -32,7 +44,7 @@ function Header({changeMode,mode}) {
                     {
                         regionlar.slice(0,3).map((item,i)=>{
                             return (<li key={i} className="flex">
-                                        <Link to={`region/${item.toLowerCase()}`} onClick={()=>{clicked(i)}}  rel="noopener noreferrer" href="#" className={`${secilmisReg[i] ? 'text-violet-600 border-violet-600':''} flex items-center px-4 -mb-1 border-b-2 dark:border-`}>{item}</Link>
+                                        <Link to={`region/${item.toLowerCase()}`}   rel="noopener noreferrer" href="#" className={`${secilmisReg[i] ? 'text-violet-600 border-violet-600':''} flex items-center px-4 -mb-1 border-b-2 dark:border-`}>{item}</Link>
                                     </li>)
                         })
                     }
@@ -47,7 +59,7 @@ function Header({changeMode,mode}) {
                     {
                         regionlar.slice(3,6).map((item,i)=>{
                             return (<li key={i+3} className="flex">
-                                        <Link to={`region/${item.toLowerCase()}`} onClick={()=>{clicked(i+3)}} rel="noopener noreferrer" href="#" className={`${secilmisReg[i+3] ? 'text-violet-600 border-violet-600':''} flex items-center px-4 -mb-1 border-b-2 dark:border-`}>{item}</Link>
+                                        <Link to={`region/${item.toLowerCase()}`}  rel="noopener noreferrer" href="#" className={`${secilmisReg[i+3] ? 'text-violet-600 border-violet-600':''} flex items-center px-4 -mb-1 border-b-2 dark:border-`}>{item}</Link>
                                     </li>)
                         })
                     }

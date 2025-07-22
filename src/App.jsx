@@ -18,7 +18,7 @@ function App() {
       localStorage.setItem('modus', JSON.stringify(newMode));
   }
   return (
-      <div className={mode ? ' bg-gray-800 dark:bg-gray-100' : 'dark bg-gray-800 dark:bg-gray-100'}>
+      <div className={mode ? '  bg-gray-800 dark:bg-gray-100' : 'dark bg-gray-800 dark:bg-gray-100'}>
         <Header changeMode={changeMode} mode={mode}/>
 
         <Routes> 

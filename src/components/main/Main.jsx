@@ -13,7 +13,7 @@ function Main() {
     const [count, setCount] = useState(12)
     const [randomIndex, setrandomIndex] = useState(0)
     const [text, setText] = useState('')
-    const [gizlet, setGizlet] = useState(false)
+    const [gizlet, setGizlet] = useState(true)
     const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 
@@ -42,7 +42,7 @@ console.log(data);
     return (
         <>
             <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
-                <div className={`${!gizlet ? 'h-0': 'h-[108px]'} transition-all duration-200 ease-in-out overflow-hidden`}>
+                <div className={`${gizlet ? 'h-0': 'h-[108px]'} transition-all duration-200 ease-in-out overflow-hidden`}>
                     <div className="relative pt-[50px] m-auto max-w-[394px]  flex  gap-2 p-4">
                         <input value={text} onChange={(e)=>setText(e.target.value.trim().toLowerCase())} className="bg-white w-full py-[10px] pr-[10px] pl-[40px] rounded-lg text-sm dark:text-gray-900 text-[#9ca3af] placeholder:text-[#9ca3af] border outline-none dark:focus:border-blue-500 border-[#e5e7eb]" placeholder="Search country name..." type="text" />
                         <svg className="absolute left-[25px] bottom-[29px]  w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20"><path stroke="currentColor" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"></path></svg>
@@ -61,7 +61,7 @@ console.log(data);
                                 else scrollTo();
                                 setGizlet(!gizlet);
                             }} 
-                            className="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50 cursor-pointer" fdprocessedid="4xrh9k">{!gizlet?'Axtarmağa başla':'Axtarışı söndür'}</button>
+                            className="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50 cursor-pointer" fdprocessedid="4xrh9k">{gizlet?'Axtarmağa başla':'Axtarışı söndür'}</button>
                         <button onClick={()=>{scrollToId(document.getElementById('content'))}} className="px-8 py-3 m-2 text-lg border rounded text-gray-50 dark:text-gray-900 border-gray-700 dark:border-gray-300 cursor-pointer" fdprocessedid="gothoo">Ölkələrə keçid et</button>
                     </div>
                 </div>
